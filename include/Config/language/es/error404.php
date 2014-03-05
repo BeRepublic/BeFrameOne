@@ -1,0 +1,3 @@
+<?php
+
+$trans = array();
