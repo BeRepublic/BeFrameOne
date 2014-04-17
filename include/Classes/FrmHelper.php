@@ -35,7 +35,7 @@ class FrmHelper
 	/**
 	 * Modifies a string to remove all non ASCII characters and spaces.
 	 */
-	static public function slugify($str, $cleanMsg=false, $replace=array(), $delimiter='-')
+	static public function slugify($str, $cleanMsg=false, $replace=array(), $delimiter='-', $allowSlash=false)
 	{
 		setlocale(LC_ALL, 'en_US.UTF8');
 		if( !empty($replace) ) {
@@ -45,14 +45,18 @@ class FrmHelper
 		$clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
 		if($cleanMsg){
 			$clean = preg_replace("/[^a-zA-Z0-9\[\]. -]/", '', $clean);
-
 			setlocale(LC_ALL, 'es_ES.UTF8');
 			return $clean;
 		}
-		$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+		$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);		
 		$clean = strtolower(trim($clean, '-'));
+		
+		if ( $allowSlash ){
+			setlocale(LC_ALL, 'es_ES.UTF8');
+			return $clean;
+		}
+		
 		$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
-
 		setlocale(LC_ALL, 'es_ES.UTF8');
 		return $clean;
 	}
@@ -76,7 +80,20 @@ class FrmHelper
 
         return date($format, $time);
     }
-
+    
+    
+    /**
+     * Getting kind of page render
+     * @return string
+     */
+    public static function getOutputType()
+    {
+    	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    		return 'AJAX';
+    	} else {
+    		return 'HTML';
+    	}
+    }
 
 }
 ?>

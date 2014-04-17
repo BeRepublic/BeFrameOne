@@ -1,0 +1,224 @@
+fieldset{
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-login{
+	display: block;
+    float: left;
+    margin-left: 17%;
+    padding: 15px;
+}
+
+/***************** Loader ***************/
+.loader{
+    background: url('../img/ajax-loader.gif') no-repeat center center;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+/***************** Generic *************/
+.ui-dialog{
+    z-index: 99999;
+}
+
+.sabadell-color{
+    background-color: #0099CC;
+    color: #ffffff;
+}
+
+.sabadell-color a{
+    color: #ffffff !important;
+}
+
+.error{
+	color: #993333;
+}
+/***************** Fonts *************/
+
+.title {
+    color: #000000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.text {
+    color: #000000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.textBlue {
+    color: #0099CC;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.active > a{
+    background-color: #000 !important;
+    color: #ffffff !important;
+}
+
+.btn-submit {
+    background: #20AFDE;
+    background: -moz-linear-gradient(center top , #20AFDE 5%, #2485A6 100%) repeat scroll 0 0 #20AFDE;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 #B6BEC1;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    width: 194px;
+}
+
+.btn-submit:hover {
+    background: #2485A6;
+    background: -moz-linear-gradient(center top , #2485A6 5%, #20AFDE 100%) repeat scroll 0 0 #2485A6;
+}
+
+.ui-menu .ui-menu-item{
+    border-bottom: 1px solid #0099CC;
+}
+
+/***************** Responsive *************/
+@media (max-width: 800px) {
+
+}
+
+
+/****************** Login *******************/
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/***************** Header *******************/
+.navbar-brand{
+    padding: 0px 15px;
+}
+
+.navbar-default .navbar-toggle{
+    border-color: #FFFFFF;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #ffffff;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+    background-color: #000000;
+}
+
+/****************** Content *****************/
+.btn-new{
+    float: right;
+}
+
+/****************** Datatable *******************/
+.dataTable{
+    width: 100%;
+}
+
+th,
+tr,
+td{
+    text-align: center;
+    border: 1px solid #0099CC;
+    padding: 5px;
+    min-width: 100px;
+}
+
+th{
+    background-color: #0099CC;
+    color: #ffffff;
+}
+
+tr.odd{
+    background-color: #ffffff;
+}
+
+tr.even{
+    background-color: #dddddd;
+}
+
+.dataTables_wrapper{
+    margin-top: 50px;
+}
+
+.dataTables_info,
+.dataTables_length{
+    width: 50%;
+    float: left;
+}
+
+.dataTables_paginate,
+.dataTables_filter{
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+
+.dataTables_paginate > a{
+    margin-left: 10px;
+}
+
+.paginate_disabled_previous{
+    color: #000;
+}
+
+.paginate_disabled_next{
+    color: #000;
+}
+
+.ui-multiselect-checkboxes li {
+    font-size: 12px;
+}
+
+.ui-multiselect-checkboxes {
+    height: auto !important;
+    max-height: 300px;
+    overflow-y: scroll;
+    position: relative;
+}

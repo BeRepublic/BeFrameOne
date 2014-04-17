@@ -12,9 +12,6 @@
 	RewriteRule ^js/(.*)?$ web/js/$1 [L]
     RewriteRule ^css/(.*)?$ web/css/$1 [L]
     RewriteRule ^fonts/(.*)?$ web/fonts/$1 [L]
-	
-	RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)/admin/(.*)$ web/admin/index.php [QSA,L]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ web/index.php [QSA,L]

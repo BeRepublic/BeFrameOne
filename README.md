@@ -1,4 +1,4 @@
-BeFrameOne ( V0.9 )
+BeFrameOne ( V1.1 )
 ==========
 
 BeFrameOne: Simple Web Site.
@@ -11,7 +11,7 @@ routing, key=>value
 
 /web/index.php to control what to view and how.
 
-Not finished, nice error 500 layout. 
+Using PDO
 In include / boostrap.php global var environment is settet.
 
 

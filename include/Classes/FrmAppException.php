@@ -7,7 +7,7 @@ namespace Classes;
  * attempting to execute a query.
  *
  */
-class AppException extends \Exception {
+class FrmAppException extends \Exception {
 
 	protected $_ErrorTitle;
 	
@@ -34,10 +34,11 @@ class AppException extends \Exception {
 		/* get the calling stack */
 		$backtrace = $this->GetTrace();
 		$backtrace = array_reverse($backtrace);
-		
+
 		$message = array();
 		foreach ($backtrace as $key=>$msg){
-			$message[] = $msg['class'].':'.$msg['function'].':'.$msg['line'];
+			$line = isset($msg['line']) ? $msg['line'] : '';
+			$message[] = $msg['class'].':'.$msg['function'].':'.$line;
 		}		
 		
 		$this->_ErrorMessage = $message;
@@ -62,9 +63,8 @@ class AppException extends \Exception {
 	 * DIE!
 	 */
 	public function __toString() {
-		$app = new Controller();
-		
-		$html = $app->render('Error/exception', array('title'=>$this->_ErrorTitle,'messages'=>$this->_ErrorMessage));
+		$app = new \App();
+		$html = $app->render('Error/exception', array('title'=>$this->_ErrorTitle,'messages'=>$this->_ErrorMessage, 'trace'=>$this->getTrace() ));
 		die($html);
 	}
 

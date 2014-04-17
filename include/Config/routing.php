@@ -8,8 +8,9 @@ $_languages = array(
 
 // Routing, all routes shall be here
 $_routing = array(
+	// Static Pages Only
 	'es' => array(
-		'home'		=> '',		
+		'home'		=> '',
 		'faq'		=> 'ayuda.html'
 		),
 	'en' => array(

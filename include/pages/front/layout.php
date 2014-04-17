@@ -14,7 +14,7 @@
         
         <!-- Header -->
 
-    	<header id="header" class="clearfix">
+    	<header>
     		<h4><?php echo $_currentPage;?></h4>
     		<div>
     			<?php 
@@ -27,8 +27,8 @@
     		<div class="row">
                 <div class="page">
 					<ul id="nav" class="nav-menu">
-						<li><a class="enlace" href="/<?php echo $App->url('home');?>" title="">Home</a></li>
-						<li><a class="enlace" href="/<?php echo $App->url('faq');?>" title="">Faq</a></li>
+						<li><a class="enlace" href="<?php echo $App->url('ismael');?>" title="">Ismael</a></li>
+						<li><a class="enlace" href="<?php echo $App->url('faq');?>" title="">Faq</a></li>
 					</ul>
                 </div>
     		</div>
@@ -44,7 +44,7 @@
 
         <!-- Footer -->
 
-        <footer id="footer" class="clearfix">
+        <footer>
        
         </footer>
 

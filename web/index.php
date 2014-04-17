@@ -1,4 +1,5 @@
 <?php
+use Classes\FrmHelper;
 /**
  * @Autor: Jacob Christensen
  */
@@ -14,24 +15,30 @@ $app = new App();
 $page = $app->getRequestedPage();
 $app->loadLanguages($page);
 
-$mainLayout = 'layout';
+$mainLayout = 'front/layout';
 $content='';
 
 // Content Render
 switch($page){
 	case 'home':
 		$token = $app->getToken();	
-		$content = $app->render('home');
+		$content = $app->render('front/home');
 		break;
 	case 'faq':
-		$content = $app->render('faq');
+		$content = $app->render('front/faq');
+		break;
+	case 'simple':
+		$content = $app->render('front/simple');
+		break;
+	case 'complete':
+		$content = $app->render('front/complete');
 		break;
 	default:
-		$content = $app->render('error404');		
+		$content = $app->render('error/404');		
 }
 
 // Render Outpur
-if ( 'html' == $app->getOutputMethod() ) {
+if ( 'HTML' == FrmHelper::getOutputType() ) {
 	echo $app->render($mainLayout, array('_content' => $content));
 } else {
 	header('Content-Type: application/json');
