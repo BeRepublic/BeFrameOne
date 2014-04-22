@@ -14,4 +14,17 @@ routing, key=>value
 Using PDO
 In include / boostrap.php global var environment is settet.
 
+Vhosts
+
+<VirtualHost *:80>
+	DocumentRoot "path to /github/BeFrameOne/web"
+	ServerName beframeone.dev
+	<Directory "path to /github/BeFrameOne/web/">
+        Options Indexes FollowSymLinks MultiViews
+		AllowOverride ALL
+		Order allow,deny
+		allow from all
+    </Directory>
+</VirtualHost>
+
 

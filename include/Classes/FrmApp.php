@@ -98,7 +98,7 @@ abstract class FrmApp {
 		if(!empty($query)) $query = array_slice($query, 0);
 		
 		// Request and language Language ADMIN
-		if ( reset($query) == 'admin' ) {
+		if ( $this->_area && reset($query) == $this->_area ) {
 			$this->_lang = 'en';
 			// Routing File
 			$this->loadRoutings();
