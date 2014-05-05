@@ -11,6 +11,9 @@ define('session_name', 'SomeSessionName');
 define('config_admin_user', 'admin');
 define('config_admin_pass', 'admin');
 
+// Use cache
+define('frm_cache', true);
+
 // Database
 if ( ENVIRONMENT != 'DEVEL' ) {
 	define('_db_host', 'localhost');

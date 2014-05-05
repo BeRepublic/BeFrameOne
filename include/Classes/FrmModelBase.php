@@ -11,16 +11,18 @@ namespace Classes;
 
 Abstract class FrmModelBase
 {
-	protected $frmPdo;
+	private $frmPdo;
 	
 	protected $attributes = array();
 	
 	public function __construct() {
-		$this->frmPdo = FrmPdo::getInstance();
 	}
 
     public function __get($key)
     {
+    	if ( !isset($this->$key) && $key == 'frmPdo' ) {
+    		$this->getFrmPdo();
+    	} 
         return isset($this->$key) ? $this->$key : false;
     }
 
@@ -28,6 +30,13 @@ Abstract class FrmModelBase
     {
         $this->$key = $value;
     }
+    
+    private function getFrmPdo()
+    {
+    	if ( $this->frmPdo ) return $this->frmPdo;
+    	$this->frmPdo = FrmPdo::getInstance();
+    	return $this->frmPdo;
+    } 
 
 	
 	/**
@@ -41,7 +50,8 @@ Abstract class FrmModelBase
 	
 	public function byId( $id, $model, $class )
 	{
-		$db = $this->frmPdo->prepare('SELECT * FROM '.$model.' WHERE id=:id');
+		
+		$db = $this->getFrmPdo()->prepare('SELECT * FROM '.$model.' WHERE id=:id');
 		$db->bindValue(":id", $id, \PDO::PARAM_INT);
 		$db->setFetchMode(\PDO::FETCH_CLASS, $class);
 		$result = $db->execute();
@@ -59,13 +69,13 @@ Abstract class FrmModelBase
         if(!$id) return false;
         
         $query = 'DELETE FROM '.$model.' WHERE id=:id';
-        $db = $this->frmPdo->prepare($query);
+        $db = $this->getFrmPdo()->prepare($query);
         $db->bindValue(":id", $id, \PDO::PARAM_INT);
 
         $result = $db->execute();
 
         if ( !$result ) {
-            $this->errors['database'] = $this->frmPdo->errorInfo();
+            $this->errors['database'] = $this->getFrmPdo()->errorInfo();
             return false;
         }
 
@@ -115,7 +125,7 @@ Abstract class FrmModelBase
 		}
 		
 		
-		$db = $this->frmPdo->prepare($query);
+		$db = $this->getFrmPdo()->prepare($query);
 	
 		foreach ($myinputs as $field=>$value) {
 			if ($fields[$key]['type'] == 'int'){
@@ -136,11 +146,11 @@ Abstract class FrmModelBase
 		$result = $db->execute();
 		
 		if ( !$result ) {
-			$this->errors['database'] = $this->frmPdo->errorInfo();
+			$this->errors['database'] = $this->getFrmPdo()->errorInfo();
 			return false;
 		}
 
-		$this->id = ($id) ? (int) $id : (int) $this->frmPdo->lastInsertId();
+		$this->id = ($id) ? (int) $id : (int) $this->getFrmPdo()->lastInsertId();
 		return $this->id;
 
 	 }
@@ -167,7 +177,7 @@ Abstract class FrmModelBase
         		' ORDER BY '.$modelName.'.id '.$order.
         		' LIMIT '.$displayStart.','.$displayLength;
 
-        $db = $this->frmPdo->prepare($query);
+        $db = $this->getFrmPdo()->prepare($query);
 
         $db->setFetchMode(\PDO::FETCH_CLASS, $className);
 
@@ -204,7 +214,7 @@ Abstract class FrmModelBase
     {
         $query = 'SELECT count(id) as total FROM '.$model;
 
-        $db = $this->frmPdo->prepare($query);
+        $db = $this->getFrmPdo()->prepare($query);
         $db->execute();
         $result = $db->fetchColumn();
         return ($result) ? $result : 0;
