@@ -118,9 +118,9 @@ Class FrmCache
 	 * Clear all cached files
 	 * @return boolean|number
 	 */
-	public function clearCache()
+	public function clearCache($name = '')
 	{
-		$fileName = $this->cache_dir.DIRECTORY_SEPARATOR.'*.frc';
+		$fileName = $this->cache_dir.DIRECTORY_SEPARATOR.$name.'*.frc';
 		$files = glob($fileName);
 		if ( empty($files) ) return false;
 		foreach ( $files as $file ){

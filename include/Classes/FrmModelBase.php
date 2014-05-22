@@ -128,7 +128,7 @@ Abstract class FrmModelBase
 		$db = $this->getFrmPdo()->prepare($query);
 	
 		foreach ($myinputs as $field=>$value) {
-			if ($fields[$key]['type'] == 'int'){
+			if ($fields[$field]['type'] == 'int'){
 				$db->bindValue(":$field", $value, \PDO::PARAM_INT);
 			} else {
 				if (empty($value)) {
